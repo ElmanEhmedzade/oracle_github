@@ -1,4 +1,4 @@
-
+--musteri kredit ve kredit_ver cedvelleri vadir
 
 CREATE TABLE musteri (
   musteri_id NUMBER,
