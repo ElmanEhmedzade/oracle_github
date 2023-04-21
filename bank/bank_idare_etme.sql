@@ -1,6 +1,3 @@
-drop table musteri;
-drop table kredit;
-drop table kredit_ver;
 
 
 CREATE TABLE musteri (
