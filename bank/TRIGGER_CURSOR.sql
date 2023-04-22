@@ -1,5 +1,6 @@
 SET SERVEROUTPUT ON;
-
+------------------------------------------------
+--silmeyi qadagan eden trigger yaradaq
 CREATE OR REPLACE TRIGGER YOU_CANT_DROP_THIS_TRIGGER
 BEFORE DROP ON SCHEMA
 BEGIN
@@ -10,7 +11,8 @@ DROP TRIGGER YOU_CANT_DROP_THIS_TRIGGER;
   
   
 
-
+--------------------------------------------------------
+-- burada gelir xerc analizi edek
 CREATE OR REPLACE TRIGGER BANK_TRIGGER
 AFTER INSERT ON kredit_ver
 FOR EACH ROW
@@ -29,6 +31,7 @@ END;
 
 
 ---------------------------------------------------------------------------------------------------------------
+--data insert edek
 INSERT INTO kredit_ver (musteri_id, AD,SOYAD,NOMRE,DOGUM_TARIXI,IS_YERI,KREDITIN_MEBLEGI,maas,valyuta,ay,xerc,tarix)
 VALUES (1, 'Elvin', 'Abbasov', 05100101000, to_date('1985-01-01', 'YYYY-MM-DD'),'DIM',1000,5000,'AZN',12,1500,to_date('2023-01-01', 'YYYY-MM-DD'));
 
@@ -49,7 +52,7 @@ SELECT * FROM musteri;
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
+--
 
 CREATE OR REPLACE PROCEDURE UPDATE_MONTHLY_PAYMENT (ID1 IN NUMBER) IS
     v_customer_id   kredit.musteri_id%TYPE;
