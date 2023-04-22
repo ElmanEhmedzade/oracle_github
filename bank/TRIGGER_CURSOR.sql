@@ -51,7 +51,7 @@ SELECT * FROM musteri;
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-----burdayam son tarixi duzelt
+
 
 CREATE OR REPLACE PROCEDURE UPDATE_MONTHLY_PAYMENT (ID1 IN NUMBER) IS
     v_customer_id   kredit.musteri_id%TYPE;
@@ -70,12 +70,12 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Musteri kreditinin ayliq ödenisi yenilendi.');
     EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Bir hata olu?tu: ' || SQLERRM);
+    DBMS_OUTPUT.PUT_LINE('sehv var: ' || SQLERRM);
 END;
 
 EXECUTE UPDATE_MONTHLY_PAYMENT(1);
 ------------------------------------------------------------------------------------------------------------------------------------------
-
+----burdayam son tarixi duzelt
 create or replace procedure update_monthly_rate(id_p) is
    p_customer_id kredit.musteri_id%type;
    p_loan_amount kredit.kredt_meblegi%type;
@@ -85,7 +85,7 @@ create or replace procedure update_monthly_rate(id_p) is
    p_total number;
 begin
     select kredit_meblegi into p_loan_amount from kredit where musteri_id = id_p;
-    p_montly_total_rate :=kreditin_meblegi+ kreditin_meblegi * p_rate ;
+    p_montly_total_rate :=kreditin_meblegi+ kreditin_meblegi * 0.01 ;
     p_total:= kreditin_meblegi + p_montly_rate;
     if MONTHS_BETWEEN(son_tarix,p_date) > 1 then
     UPDATE KREDIT SET kreditin_meblegi = round(p_total) WHERE MUSTERI_ID = ID1;
@@ -95,7 +95,7 @@ begin
 
 
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Bir hata olu?tu: ' || SQLERRM);
+    DBMS_OUTPUT.PUT_LINE('sehv var ' || SQLERRM);
    end;
    
    
