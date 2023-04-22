@@ -19,7 +19,7 @@ CREATE TABLE kredit (
   valyuta VARCHAR2(10),
   faiz NUMBER,
   tarix DATE,
- -- son_tarix DATE,
+  son_tarix DATE,
  -- odenib NUMBER(1),
   --qaliq NUMBER,
   CONSTRAINT pk_kredit PRIMARY KEY (kredit_id)
