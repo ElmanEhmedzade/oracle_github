@@ -1,5 +1,7 @@
 --musteri kredit ve kredit_ver cedvelleri vardir
-
+drop table musteri;
+drop table kredit;
+drop table kredit_ver;
 CREATE TABLE musteri (
   musteri_id NUMBER,
   ad VARCHAR2(30),
@@ -16,7 +18,7 @@ CREATE TABLE kredit (
   kreditin_meblegi NUMBER,
   valyuta VARCHAR2(10),
   faiz NUMBER,
- -- tarix DATE,
+  tarix DATE,
  -- son_tarix DATE,
  -- odenib NUMBER(1),
   --qaliq NUMBER,
@@ -37,6 +39,7 @@ CREATE TABLE kredit_ver (
   maas NUMBER,
   ay number,
   xerc NUMBER,
+  tarix date,
 
   CONSTRAINT pk_kredit_ver PRIMARY KEY (musteri_id)
 );
