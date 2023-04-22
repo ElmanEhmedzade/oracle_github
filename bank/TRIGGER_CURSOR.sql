@@ -63,6 +63,7 @@ BEGIN
     v_monthly_payment := v_loan_amount / 12 ;
     v_total := v_loan_amount - v_monthly_payment;
     UPDATE KREDIT SET kreditin_meblegi = round(v_total) WHERE MUSTERI_ID = ID1;
+    UPDATE KREDIT SET son_tarix = sysdate WHERE MUSTERI_ID = ID1;
     
     
 
@@ -72,7 +73,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Bir hata olu?tu: ' || SQLERRM);
 END;
 
-EXECUTE UPDATE_MONTHLY_PAYMENT(3);
+EXECUTE UPDATE_MONTHLY_PAYMENT(1);
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 create or replace procedure update_monthly_rate(id_p) is

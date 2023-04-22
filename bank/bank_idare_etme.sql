@@ -19,14 +19,13 @@ CREATE TABLE kredit (
   valyuta VARCHAR2(10),
   faiz NUMBER,
   tarix DATE,
-  son_tarix DATE,
+  son_tarix DATE DEFAULT TO_DATE('2023-01-01', 'YYYY-MM-DD'),
  -- odenib NUMBER(1),
   --qaliq NUMBER,
   CONSTRAINT pk_kredit PRIMARY KEY (kredit_id)
 --  CONSTRAINT fk_kredit_musteri FOREIGN KEY (musteri_id) REFERENCES musteri(musteri_id),
  -- CONSTRAINT ck_odenib CHECK (odenib IN (1,0))
 );
-
 CREATE TABLE kredit_ver (
   musteri_id NUMBER,
   ad VARCHAR2(30),
