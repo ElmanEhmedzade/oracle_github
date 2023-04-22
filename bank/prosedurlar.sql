@@ -52,15 +52,15 @@ BEGIN
     SELECT months_between(sysdate, p_date) INTO p_months_diff FROM kredit WHERE musteri_id = id_p;
     IF p_months_diff > 1 THEN
         UPDATE kredit SET kreditin_meblegi = round(p_total) WHERE musteri_id = id_p;
-        DBMS_OUTPUT.PUT_LINE('Mü?teri kredisi için ayl?k ödeme güncellendi.');
+        DBMS_OUTPUT.PUT_LINE('Musteri kreditinin ayliq ödenisi yenilendi.');
     ELSE
-        DBMS_OUTPUT.PUT_LINE('Mü?teri kredisi için ayl?k ödeme güncellenmedi. 1 aydan daha az süredir kredi kullan?lmaktad?r.');
+        DBMS_OUTPUT.PUT_LINE('MMusteri kreditinin ayliq ödenisi yenilenmedi..');
     END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        DBMS_OUTPUT.PUT_LINE('Belirtilen mü?teri için kredi kayd? bulunamad?.');
+        DBMS_OUTPUT.PUT_LINE('musteri tapilmadi');
     WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Hata: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('sehv ' || SQLERRM);
 END;
 
 execute update_monthly_rate(3);
