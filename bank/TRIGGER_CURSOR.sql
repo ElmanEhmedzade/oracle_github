@@ -75,21 +75,22 @@ END;
 
 EXECUTE UPDATE_MONTHLY_PAYMENT(1);
 ------------------------------------------------------------------------------------------------------------------------------------------
-----burdayam son tarixi duzelt
-create or replace procedure update_monthly_rate(id_p) is
+----burdayam duzelt
+create or replace procedure update_monthly_rate(id_p IN NUMBER) is
    p_customer_id kredit.musteri_id%type;
    p_loan_amount kredit.kredt_meblegi%type;
    p_date kredit.tarix%type;
    p_montly_total_rate number;
-   p_rate kredit.faiz%type;
+  -- p_rate kredit.faiz%type;
    p_total number;
 begin
     select kredit_meblegi into p_loan_amount from kredit where musteri_id = id_p;
-    p_montly_total_rate :=kreditin_meblegi+ kreditin_meblegi * 0.01 ;
+    p_montly_total_rate :=kreditin_meblegi+( kreditin_meblegi * 0.01) ;
     p_total:= kreditin_meblegi + p_montly_rate;
-    if MONTHS_BETWEEN(son_tarix,p_date) > 1 then
+    if (SELECT  MONTHS_BETWEEN(TO_DATE(son_tarix, 'YYYY-MM-DD'), TO_DATE(p_date, 'YYYY-MM-DD')),1) FROM KREDIT WHERE MUSTERI_ID = ID1) > 1 then
     UPDATE KREDIT SET kreditin_meblegi = round(p_total) WHERE MUSTERI_ID = ID1;
-  
+    else
+    
     end if;
     DBMS_OUTPUT.PUT_LINE('Musteri kreditinin ayliq ödenisi yenilendi.');
 
@@ -99,4 +100,32 @@ begin
    end;
    
    
-   SELECT MONTHS_BETWEEN(TO_DATE('2020-08-22', 'YYYY-MM-DD'), TO_DATE('2020-08-19', 'YYYY-MM-DD'))  FROM dual;
+   SELECT ROUND(MONTHS_BETWEEN(TO_DATE('2020-09-22', 'YYYY-MM-DD'), TO_DATE('2020-08-31', 'YYYY-MM-DD')),1)  FROM dual ;
+
+
+CREATE OR REPLACE PROCEDURE update_monthly_rate(id_p IN NUMBER) IS
+   p_customer_id kredit.musteri_id%type;
+   p_loan_amount kredit.kreditin_meblegi%type;
+   p_date kredit.tarix%type;
+   p_montly_total_rate number;
+   p_total number;
+   p_months_diff number;
+BEGIN
+    SELECT musteri_id, kreditin_meblegi, tarix INTO p_customer_id, p_loan_amount, p_date FROM kredit WHERE musteri_id = id_p;
+    p_montly_total_rate := p_loan_amount * 0.01; -- 1% ayl?k faiz
+    p_total := p_loan_amount + p_montly_total_rate;
+    SELECT months_between(sysdate, p_date) INTO p_months_diff FROM kredit WHERE musteri_id = id_p;
+    IF p_months_diff > 1 THEN
+        UPDATE kredit SET kreditin_meblegi = round(p_total) WHERE musteri_id = id_p;
+        DBMS_OUTPUT.PUT_LINE('Mü?teri kredisi için ayl?k ödeme güncellendi.');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Mü?teri kredisi için ayl?k ödeme güncellenmedi. 1 aydan daha az süredir kredi kullan?lmaktad?r.');
+    END IF;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Belirtilen mü?teri için kredi kayd? bulunamad?.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Hata: ' || SQLERRM);
+END;
+
+exec update_monthly_rate(3);

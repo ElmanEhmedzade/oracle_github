@@ -2,6 +2,7 @@
 drop table musteri;
 drop table kredit;
 drop table kredit_ver;
+
 CREATE TABLE musteri (
   musteri_id NUMBER,
   ad VARCHAR2(30),
