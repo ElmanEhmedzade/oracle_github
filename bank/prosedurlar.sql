@@ -1,3 +1,4 @@
+set serveroutput on;
 BEGIN
   DBMS_SCHEDULER.CREATE_JOB(
     job_name => 'update_kredit_rate_job',
