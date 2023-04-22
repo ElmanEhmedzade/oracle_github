@@ -47,8 +47,6 @@ SELECT * FROM KREDIT;
 SELECT * FROM KREDIT_ver;
 SELECT * FROM musteri;
 
-
-
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -128,4 +126,4 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Hata: ' || SQLERRM);
 END;
 
-exec update_monthly_rate(3);
+exec update_monthly_rate(3); 
