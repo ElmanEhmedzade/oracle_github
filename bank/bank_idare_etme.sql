@@ -43,3 +43,4 @@ CREATE TABLE kredit_ver (
 
   CONSTRAINT pk_kredit_ver PRIMARY KEY (musteri_id)
 );
+
