@@ -76,13 +76,17 @@ EXECUTE UPDATE_MONTHLY_PAYMENT(3);
 create or replace procedure update_monthly_rate(id_p) is
    p_customer_id kredit.musteri_id%type;
    p_loan_amount kredit.kredt_meblegi%type;
+   p_date kredit.tarix%type;
    p_montly_rate number;
    p_total number;
 begin
     select kredit_meblegi into p_loan_amount from kredit where musteri_id = id_p;
     p_montly_rate :=kreditin_meblegi+ kreditin_meblegi * 0,01 ;
     p_total:= kreditin_meblegi + p_montly_rate;
-    if 
+    if DATEDIFF(MONTH,son_tarix,p_date)>1 then
+    UPDATE KREDIT SET kreditin_meblegi = round(p_total) WHERE MUSTERI_ID = ID1;
+  
+    end if;
     DBMS_OUTPUT.PUT_LINE('Musteri kreditinin ayliq ödenisi yenilendi.');
 
 
