@@ -11,7 +11,7 @@ CREATE OR REPLACE PROCEDURE upd_place(user_id_yz IN NUMBER, PL_ID_YZ IN NUMBER, 
   V_PASS_SO NUMBER;
   FERQ NUMBER;
   V_DEP_DATE TICKET.DEP_DATE%TYPE;
-  V_UPDATED_DEP_DATE TICKET.DEP_DATE%TYPE; -- Yeni güncellenmi? DEP_DATE için ara de?i?ken
+  V_UPDATED_DEP_DATE TICKET.DEP_DATE%TYPE; 
 BEGIN
   SELECT USER_ID, MONEY INTO v_USER_ID, v_BALANCE FROM USER_TICKET WHERE USER_ID = user_id_yz;
   SELECT PL_ID, PRICE, PASS_NUM, DEP_DATE INTO v_PL_ID, v_PRICE, V_PASS_NUM, V_DEP_DATE FROM TICKET WHERE PL_ID = PL_ID_YZ;
@@ -30,7 +30,7 @@ BEGIN
     dbms_output.put_line('Bilet mövcud deyil');
   END IF;
   
-  -- DEP_DATE'i güncellemek için ara bir de?i?kene ihtiyac?m?z var
+  
   V_UPDATED_DEP_DATE := V_DEP_DATE + 1;
   
   IF V_PASS_NUM = 0 THEN
