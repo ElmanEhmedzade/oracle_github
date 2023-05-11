@@ -52,7 +52,7 @@ SELECT * FROM musteri;
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
---
+
 
 CREATE OR REPLACE PROCEDURE UPDATE_MONTHLY_PAYMENT (ID1 IN NUMBER) IS
     v_customer_id   kredit.musteri_id%TYPE;
