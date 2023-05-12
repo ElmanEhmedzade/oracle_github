@@ -1,6 +1,6 @@
 
-  
-EXECUTE upd_place(8,6,10);
+   
+EXECUTE upd_place(10,10,10);
 
 CREATE OR REPLACE PROCEDURE upd_place(user_id_yz IN NUMBER, PL_ID_YZ IN NUMBER, PASS_NUM_Y IN NUMBER) IS
   v_USER_ID USER_TICKET.USER_ID%type;
@@ -18,6 +18,7 @@ BEGIN
 
   FERQ := v_BALANCE - PASS_NUM_Y * v_PRICE;
   V_PASS_SO := V_PASS_NUM - PASS_NUM_Y;
+  V_UPDATED_DEP_DATE := V_DEP_DATE + 1;
 
   IF V_PASS_NUM > 0 THEN
     IF v_BALANCE >= PASS_NUM_Y * v_PRICE THEN
@@ -26,18 +27,13 @@ BEGIN
     ELSE
       dbms_output.put_line('Yeterli m?bl?? yoxdur');
     END IF;
+  ELSIF V_PASS_NUM = 0 THEN
+    UPDATE TICKET SET DEP_DATE = V_UPDATED_DEP_DATE WHERE PL_ID = PL_ID_YZ;
+    dbms_output.put_line('TEST');
+   -- UPDATE TICKET SET PASS_NUM = 20 WHERE PL_ID = PL_ID_YZ;
   ELSE
     dbms_output.put_line('Bilet mövcud deyil');
   END IF;
-  
-  
-  /*V_UPDATED_DEP_DATE := V_DEP_DATE + 1;
-  
-  IF V_PASS_NUM = 0 THEN
-    UPDATE TICKET SET DEP_DATE = V_UPDATED_DEP_DATE WHERE PL_ID = PL_ID_YZ;
-   -- UPDATE TICKET SET PASS_NUM = 20 WHERE PL_ID = PL_ID_YZ;
-  END IF;
-  */
 EXCEPTION
   WHEN NO_DATA_FOUND THEN
     DBMS_OUTPUT.PUT_LINE('M?lumat tap?lmad?.');
