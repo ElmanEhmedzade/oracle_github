@@ -12,16 +12,18 @@ END;
 ---------------------------------------------------------------------------------------------------------------
 
 
-
+--ayliq odenisden cixmalar
 
 CREATE OR REPLACE PROCEDURE UPDATE_MONTHLY_PAYMENT (ID1 IN NUMBER) IS
     v_customer_id   kredit.musteri_id%TYPE;
     v_loan_amount   kredit.kreditin_meblegi%TYPE;
     v_monthly_payment NUMBER;
+    v_monthly_ay  KREDIT_ver.ay%type;
     v_total NUMBER;
 BEGIN
     SELECT kreditin_meblegi INTO v_loan_amount FROM KREDIT WHERE MUSTERI_ID = ID1;
-    v_monthly_payment := v_loan_amount / 12 ;
+    SELECT ay INTO v_monthly_ay FROM KREDIT_ver WHERE MUSTERI_ID = ID1;
+    v_monthly_payment := v_loan_amount / v_monthly_ay ;
     v_total := v_loan_amount - v_monthly_payment;
     UPDATE KREDIT SET kreditin_meblegi = round(v_total) WHERE MUSTERI_ID = ID1;
     UPDATE KREDIT SET son_tarix = sysdate WHERE MUSTERI_ID = ID1;
@@ -34,7 +36,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('sehv var: ' || SQLERRM);
 END;
 
-EXECUTE UPDATE_MONTHLY_PAYMENT(1);
+EXECUTE UPDATE_MONTHLY_PAYMENT(3);
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -63,4 +65,26 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('sehv ' || SQLERRM);
 END;
 
-execute update_monthly_rate(3);
+EXECUTE update_monthly_rate(3);
+---------------------------------------------------------------------------------------------------------------------------
+SELECT * FROM depozit;
+CREATE OR REPLACE PROCEDURE montl_depo_pay_procedure(dep_id NUMBER) IS
+  month_amount NUMBER;
+  dep_mon depozit.ay%TYPE;
+  dep_meb depozit.DEPOZITIN_MEBLEGI%type;
+  ffu number;
+BEGIN
+   
+   SELECT (depozit.DEPOZITIN_MEBLEGI /depozit.ay)*0.06,depozit.DEPOZITIN_MEBLEGI INTO month_amount,dep_meb FROM depozit WHERE MUSTERI_ID =  dep_id;
+   ffu:= dep_meb + month_amount;
+   UPDATE depozit SET depozit.DEPOZITIN_MEBLEGI = ffu WHERE  MUSTERI_ID =  dep_id;
+DBMS_OUTPUT.PUT_LINE('Depozit miqtar? yenilende. Yeni miqdar: ' || ffu);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('Mü?teri tapilmadi.');
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('xeta: ' || SQLERRM);
+END;
+exec montl_depo_pay_procedure(5);
+-------aylara gore faizi meblegini deyis cunki vaxt azaldiqca qiymet artir
+----------------------------------------
