@@ -53,10 +53,11 @@ CREATE TABLE depozit (
   is_yeri VARCHAR2(60),
   depozitin_meblegi NUMBER,
   dep_qoy_tar DATE,
+  update_tarixi DATE,
   son_meblegi NUMBER,
-  ay number,
-  faiz NUMBER,
-  son_tarix date,
+  ay NUMBER,
+ -- faiz NUMBER,
+--  son_tarix date,
   CONSTRAINT pk_depozit PRIMARY KEY (musteri_id),
   CONSTRAINT fk_deposit_musteri FOREIGN KEY (musteri_id) REFERENCES kredit_ver(musteri_id)
 );

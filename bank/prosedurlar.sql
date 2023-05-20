@@ -1,13 +1,4 @@
 set serveroutput on;
-BEGIN
-  DBMS_SCHEDULER.CREATE_JOB(
-    job_name => 'update_kredit_rate_job',
-    job_type => 'STORED_PROCEDURE',
-    job_action => 'update_monthly_rate',
-    start_date => TRUNC(SYSDATE, 'MM') + INTERVAL '1' MONTH, -- start next month
-    repeat_interval => 'FREQ=MONTHLY;BYMONTHDAY=1', -- run on the first day of each month
-    enabled => TRUE);
-END;
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -88,3 +79,44 @@ END;
 exec montl_depo_pay_procedure(5);
 -------aylara gore faizi meblegini deyis cunki vaxt azaldiqca qiymet artir
 ----------------------------------------
+
+
+--depozit ayliq yenilenme
+CREATE OR REPLACE PROCEDURE update_depozit_monthly IS
+  v_faiz   number;
+  v_depozit_meblegi depozit.depozitin_meblegi%TYPE;
+  v_depozit_son_meblegi depozit.SON_MEBLEGI%TYPE;
+  v_depozit depozit%ROWTYPE;
+  v_monthly_amount NUMBER;
+    CURSOR c_depozit IS SELECT *  FROM depozit;
+BEGIN
+  OPEN c_depozit;
+  LOOP
+    FETCH c_depozit INTO v_depozit;
+    EXIT WHEN c_depozit%NOTFOUND;
+    CASE v_depozit.ay
+      WHEN 12 THEN v_faiz := 6;
+      WHEN 18 THEN v_faiz := 7;
+      WHEN 24 THEN v_faiz := 8;
+      WHEN 36 THEN v_faiz := 9;
+    END CASE;
+      IF v_depozit.SON_MEBLEGI = 0 THEN
+        UPDATE depozit
+        SET SON_MEBLEGI = v_depozit.depozitin_meblegi + (v_depozit.depozitin_meblegi * v_faiz / 100), UPDATE_TARIXI = SYSDATE
+        WHERE musteri_id = v_depozit.musteri_id;
+      ELSE   
+        UPDATE depozit
+        SET SON_MEBLEGI = ROUND(SON_MEBLEGI + (SON_MEBLEGI * v_faiz / 100), 2),
+            UPDATE_TARIXI = SYSDATE
+        WHERE musteri_id = v_depozit.musteri_id;
+      END IF;
+   DBMS_OUTPUT.PUT_LINE('Musteri ID: ' || v_depozit.musteri_id || ', Mebleg: ' || v_depozit.depozitin_meblegi || ', Update Tarixi: '|| TO_CHAR(v_depozit.update_tarixi, 'YYYY-MM-DD HH24:MI:SS') || '    DEPOZITIN SON AY MEBLEGI    '|| v_depozit.SON_MEBLEGI);
+  
+ END LOOP;
+   
+  CLOSE c_depozit;
+
+  DBMS_OUTPUT.PUT_LINE('Depozit cedveli update olundu');
+END;
+/
+------------------------------------------------------------------------

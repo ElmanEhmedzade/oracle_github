@@ -87,16 +87,20 @@ INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meb
 VALUES (20, 'Rüf?t', '?liyev', 5551234, TO_DATE('1986-09-03', 'YYYY-MM-DD'), 'JKL Korporasiyas?', 1500, TO_DATE('1988-11-10', 'YYYY-MM-DD'), 12, 0, TO_DATE('1988-11-10', 'YYYY-MM-DD'))
 SELECT * FROM dual;
 
-INSERT ALL 
-INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,SON_MEBLEGI, ay, faiz, son_tarix)
-VALUES (1, 'Elvin', 'Abbasov', 05100101000, TO_DATE('1985-01-01', 'YYYY-MM-DD'), 'DIM', 1000, TO_DATE('2023-01-01', 'YYYY-MM-DD'), 0,12, 0, ADD_MONTHS(TO_DATE('2023-01-01', 'YYYY-MM-DD'), 0))
-INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,SON_MEBLEGI, ay, faiz, son_tarix)
-VALUES (2, 'Tural', 'Mammedov', 0509080700, TO_DATE('1993-01-01', 'YYYY-MM-DD'), 'DIN', 20000, TO_DATE('2023-02-01', 'YYYY-MM-DD'), 0,24, 0, ADD_MONTHS(TO_DATE('2023-02-01', 'YYYY-MM-DD'), 0))
-INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,SON_MEBLEGI, ay, faiz, son_tarix)
-VALUES (3, 'Nergiz', 'Memmedova', 0506010600, TO_DATE('1998-01-01', 'YYYY-MM-DD'), 'BDU', 2000, TO_DATE('2023-03-01', 'YYYY-MM-DD'),0, 18, 0, ADD_MONTHS(TO_DATE('2023-03-01', 'YYYY-MM-DD'), 0))
-INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,SON_MEBLEGI, ay, faiz, son_tarix)
-VALUES (4, 'Nigar', 'Hüseynova', 0507030400, TO_DATE('1995-01-01', 'YYYY-MM-DD'), 'AZMIU', 200000, TO_DATE('2023-04-01', 'YYYY-MM-DD'),0, 36, 0, ADD_MONTHS(TO_DATE('2023-04-01', 'YYYY-MM-DD'), 0))
-INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,SON_MEBLEGI, ay, faiz, son_tarix)
-VALUES (5, 'Fuad', 'M?mm?dov', 5551234, TO_DATE('1983-04-20', 'YYYY-MM-DD'), 'ABC Co.', 7000, TO_DATE('2023-01-05', 'YYYY-MM-DD'),0, 12, 18, ADD_MONTHS(TO_DATE('2023-01-05', 'YYYY-MM-DD'), 0))
 
+
+
+
+
+INSERT ALL 
+INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,update_tarixi,SON_MEBLEGI, ay)
+VALUES (1, 'Elvin', 'Abbasov', 05100101000, TO_DATE('1985-01-01', 'YYYY-MM-DD'), 'DIM', 1000, TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), 0,12)
+INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,update_tarixi,SON_MEBLEGI, ay)
+VALUES (2, 'Tural', 'Mammedov', 0509080700, TO_DATE('1993-01-01', 'YYYY-MM-DD'), 'DIN', 20000, TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), 0,24)
+INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,update_tarixi,SON_MEBLEGI, ay)
+VALUES (3, 'Nergiz', 'Memmedova', 0506010600, TO_DATE('1998-01-01', 'YYYY-MM-DD'), 'BDU', 2000, TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'),0, 18)
+INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,update_tarixi,SON_MEBLEGI, ay)
+VALUES (4, 'Nigar', 'Hüseynova', 0507030400, TO_DATE('1995-01-01', 'YYYY-MM-DD'), 'AZMIU', 200000, TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'),TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'),0, 36)
+INTO depozit (musteri_id, ad, soyad, nomre, dogum_tarixi, is_yeri, depozitin_meblegi, dep_qoy_tar,update_tarixi,SON_MEBLEGI, ay)
+VALUES (5, 'Fuad', 'M?mm?dov', 5551234, TO_DATE('1983-04-20', 'YYYY-MM-DD'), 'ABC Co.', 7000, TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-01-01 1:10:21', 'YYYY-MM-DD HH24:MI:SS'),0, 12)
 SELECT * FROM dual;
