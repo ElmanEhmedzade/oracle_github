@@ -1,20 +1,29 @@
 
 --- 
 DROP TABLE BOOKS;
+--- 
+DROP TABLE writer;
+--- 
+DROP TABLE suplier;
+--- 
+DROP TABLE sale;
+
+
 CREATE TABLE books(
   book_id number GENERATED ALWAYS AS IDENTITY,
   book_name VARCHAR2(50),
-  writer VARCHAR2(50),
+  writer_id number,
   price NUMBER,
   stock NUMBER,
-  constraint pk_books primary key (book_id)
+  CONSTRAINT pk_books PRIMARY KEY (book_id),
+  constraint fk_writer_books foreign key (writer_id) references writer(writer_id)
 );
 
 CREATE TABLE writer(
   writer_id NUMBER GENERATED ALWAYS AS IDENTITY,
   writer_name VARCHAR2(50),
   country VARCHAR2(30),
-  constraint pk_writer primary key (writer_id)
+  CONSTRAINT pk_writer PRIMARY KEY (writer_id)
 );
 
 
@@ -40,3 +49,5 @@ CREATE TABLE sale(
   CONSTRAINT fk_sale_books FOREIGN KEY (book_id) REFERENCES books(book_id),
   CONSTRAINT fk_sale_suplier FOREIGN KEY (seller_id) REFERENCES suplier(seller_id)
 );
+
+commit;
