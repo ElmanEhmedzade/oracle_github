@@ -94,13 +94,14 @@ EXCEPTION
     ROLLBACK;
     RAISE;
 END;
-
+------------------------------------------------------------------
 
 -----------------------------------------------------------------------
-select * from customers_table;
-
-EXEC ADD_CUSTOMERS(4, 'TEST', 'TEST', 'TEST@example.com', '123456789', '123 Main St', 'CL', 'US', SYSDATE);
+SELECT * FROM customers_table;
+SET SERVEROUTPUT ON;
+EXECUTE add_customers(111, 'TEST', 'TEST', 'TEST@example.com', '123456789', '123 Main St', 'CL', 'US', SYSDATE);
 EXEC UPDATE_CUSTOMERS(4, 'TEST1', 'TEST', 'TEST@example.com', '123456789', '123 Main St', 'CL', 'US', SYSDATE);
 exec DELETE_customers(4);
 exec id_customers(1);
+EXECUTE id_customers(111);
 --------------------------------------------------------------------------------

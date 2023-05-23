@@ -27,8 +27,8 @@ CREATE OR REPLACE TRIGGER DELETE_ME
 BEFORE DELETE on customers_table_test_data
 FOR EACH ROW
 BEGIN
---  IF :OLD.CustomerID = :old.CustomerID THEN
-  IF :OLD.CustomerID = 1 THEN
+ IF :OLD.CustomerID = :old.CustomerID THEN
+-- IF :OLD.CustomerID = 1 THEN
   raise_application_error(-20000, 'menim id_im silinmir  )');
   end if;
 END;
@@ -45,8 +45,10 @@ END;
 --triggeri ne vaxt kim  ne etdi kimi et
 -----------------------------------------------------------------
 --test
-drop trigger customers_table_trigger;
-DELETE FROM customers_table_test_data WHERE CustomerID = 1;
+SELECT * FROM customers_table_test_data;
+
+DROP TRIGGER customers_table_trigger;
+DELETE FROM customers_table_test_data WHERE CustomerID = 2;
 update customers_table_test_data set name = 'alma' where CustomerID = 2;
 INSERT INTO customers_table_test_data (CustomerID, NAME, Surname, Email, Telephone, Address, City, Country, date_registration)
 VALUES (3, 'John', 'Doe', 'john@example.com', '123456789', '123 Main St', 'City', 'Country', SYSDATE);
@@ -62,12 +64,44 @@ VALUES (1, 'Elman', '?hm?dzad?', 'Elman@example.com', '123456789', 'HBZ', 'Baku'
 delete from customers_table_test_data where customerid = 2;
 ---------------------------------------------------------------------
 
+create or replace trigger 
+
+
+CREATE OR REPLACE TRIGGER customer_TRIGGER
+BEFORE INSERT OR UPDATE OR DELETE ON PROFIT
+FOR EACH ROW
+DECLARE
+    WHOST customers_table.PC%TYPE;
+    WIP customers_table.ip_adress%TYPE;
+BEGIN
+    SELECT SYS_CONTEXT('USERENV','HOST'), SYS_CONTEXT('USERENV','IP_ADDRESS')
+    INTO WHOST, WIP
+    FROM DUAL;
+
+    IF INSERTING THEN
+        INSERT INTO customers_table_admin(NE_ETDI, KIM_ETDI, NE_ZAMAN, PC, IP_ADRESS, CustomerID)
+        VALUES ('INSERT', USER, SYSDATE, WHOST, WIP, :NEW.CustomerID);
+    END IF;
+
+    IF UPDATING THEN
+        INSERT INTO customers_table_admin(NE_ETDI, KIM_ETDI, NE_ZAMAN, PC, IP_ADRESS, CustomerID)
+        VALUES ('NEWUPDATE', USER, SYSDATE, WHOST, WIP, :NEW.CustomerID);
+
+        INSERT INTO customers_table_admin(NE_ETDI, KIM_ETDI, NE_ZAMAN, PC, IP_ADRESS, CustomerID)
+        VALUES ('OLDUPDATE', USER, SYSDATE, WHOST, WIP, :OLD.CustomerID);
+    END IF;
+
+    IF DELETING THEN
+        INSERT INTO customers_table_admin(NE_ETDI, KIM_ETDI, NE_ZAMAN, PC, IP_ADRESS, CustomerID)
+        VALUES ('OLDUPDATE', USER, SYSDATE, WHOST, WIP, :OLD.CustomerID);
+    END IF;
+END;
 
 
 
 
 
-
+--------------------------------- 12C Error(11,54): PLS-00049: bad bind variable 'NEW.CUSTOMERID' PROBLEMS
 
 
 

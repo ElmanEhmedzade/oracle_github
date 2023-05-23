@@ -3,8 +3,9 @@
 SELECT * FROM TICKET;
 SELECT * FROM USER_TICKET;
 
-set serveroutput on;
-EXECUTE upd_place(1,1,1);
+
+SET serveroutput ON;
+EXECUTE upd_place(6,3,15);
 
 CREATE OR REPLACE PROCEDURE upd_place(user_id_yz IN NUMBER, PL_ID_YZ IN NUMBER, PASS_NUM_Y IN NUMBER) IS  --PASS_NUM_Y BILET SAYI,,PL_ID_YZ MEKANIN Adi,,user_id istifadeci adi 
   v_USER_ID USER_TICKET.USER_ID%type;
