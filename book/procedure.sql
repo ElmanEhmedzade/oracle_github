@@ -60,6 +60,51 @@ BEGIN
 end;
 
 --------------------------------------------------------
---KITAB HAQQINDA MELUMAT GETIREN PROCEDURE YARAT
---EN COX SATIS EDEN YAZARI GETIR  FILTERASIYA ISLERI
+
+-----------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE about_books(
+  book_id124 VARCHAR2)
+AS
+  book_name124 varchar2(50);
+  TOTAL_SALES124 NUMBER :=0;
+  writer_name124 VARCHAR2(60);
+  price124 NUMBER;
+  stock124 NUMBER;
+BEGIN
+
+  SELECT book_name, price, stock INTO book_name124, price124, stock124  FROM BOOKS
+  WHERE book_id = book_id124 ;
+  
+  SELECT writer_name  INTO writer_name124   FROM BOOKS  B
+  INNER JOIN writer  USING(writer_id) WHERE B.book_id = book_id124 ;
+
+
+
+  SELECT SUM(B.price*S.sales_amount) INTO TOTAL_SALES124  FROM BOOKS B
+  INNER JOIN SALE S USING(book_id) WHERE book_id = book_id124 ;
+
+  COMMIT;
+  dbms_output.put_line('KITAB_?D ||'||book_id124 ||'|| KITABIN_ADI ||'||book_name124||'|| YAZIÇI ||' ||writer_name124 ||'|| Q?YM?T ||'||price124||'|| SAYI ||' ||stock124|| '|| ÜMUM? SATI?I ||'||TOTAL_SALES124);
+  
+  exception
+    WHEN NO_DATA_FOUND THEN
+        dbms_output.put_line('data tapilmadi');
+  
+END;
+
+SET serveroutput ON;
+exec about_books(8);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 COMMIT;
+----------------------------------------------------------------------------------------
+ 
+ 
+CREATE OR REPLACE PROCEDURE filter_seller
+as
+ 
+begin
+end;
