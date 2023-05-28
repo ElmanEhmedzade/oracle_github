@@ -1,15 +1,5 @@
-
---- 
-DROP TABLE BOOKS;
---- 
-DROP TABLE writer;
---- 
-DROP TABLE suplier;
---- 
-DROP TABLE sale;
-
-
-CREATE TABLE books(
+--kitab c?dv?li
+CREATE TABLE books( 
   book_id number GENERATED ALWAYS AS IDENTITY,
   book_name VARCHAR2(50),
   writer_id number,
@@ -18,17 +8,14 @@ CREATE TABLE books(
   CONSTRAINT pk_books PRIMARY KEY (book_id),
   constraint fk_writer_books foreign key (writer_id) references writer(writer_id)
 );
-
+--yaz?ç? c?dv?li
 CREATE TABLE writer(
   writer_id NUMBER GENERATED ALWAYS AS IDENTITY,
   writer_name VARCHAR2(50),
   country VARCHAR2(30),
   CONSTRAINT pk_writer PRIMARY KEY (writer_id)
 );
-
-
-
-
+--sat?c?lar c?dv?li
 CREATE TABLE suplier(
   seller_id NUMBER GENERATED ALWAYS AS IDENTITY,
   seller VARCHAR2(50),
@@ -38,7 +25,7 @@ CREATE TABLE suplier(
   constraint pk_suplier primary key (seller_id)
 );
 
-
+--sat?? c?dv?li
 CREATE TABLE sale(
   sale_id number GENERATED ALWAYS AS IDENTITY,
   book_id number,

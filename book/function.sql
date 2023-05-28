@@ -2,7 +2,6 @@ CREATE OR REPLACE FUNCTION total_sales(-- kitabin idsine gore total getirir
   BOOK_ID1 NUMBER
 
 ) RETURN NUMBER
-
 IS
   TOTAL_SALES NUMBER :=0;
 BEGIN
@@ -45,7 +44,7 @@ SELECT writer_total_count1('J.D. Salinger') TOTAL FROM DUAL;
 
 ----------------------------------------------------------------------
 
---YAZARIN NECE KITABinin SATilDIGINI GOSTEREN PROCEDURE YARAT  
+--sat?c?n?n  NECE kitab? SATDIGINI GOSTEREN funksiya YARAT  
 
 CREATE OR REPLACE FUNCTION suplier_total_count1(
   seller_id1 number
@@ -58,6 +57,6 @@ BEGIN
   WHERE seller_id = seller_id1;
   RETURN total_count;
 END;
--- dbms_output.put_line(seller_id1||' '||total_count);
+
 SELECT suplier_total_count1(1) TOTAL FROM DUAL;
 --------------------------------------------------------

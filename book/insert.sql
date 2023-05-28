@@ -1,4 +1,4 @@
--- writer tablosu için örnek veriler
+
 INSERT INTO writer (writer_name, country)
 VALUES ('F. Scott Fitzgerald', 'USA');
 
@@ -61,7 +61,7 @@ VALUES ('The Lion, the Witch and the Wardrobe', 10, 12.99, 110);
 
 
 --------------------------------------------------------
--- suplier tablosu için örnek veriler
+
 INSERT INTO suplier (seller, address, phone, email)
 VALUES ('ABC Books', '123 Main Street, Cityville', '123-456-7890', 'abcbooks@example.com');
 
