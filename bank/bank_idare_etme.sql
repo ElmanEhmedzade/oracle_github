@@ -1,10 +1,4 @@
---musteri kredit ve kredit_ver cedvelleri vardir
-drop table musteri;
-DROP TABLE kredit;
-drop table kredit_ver;
-DROP TABLE depozit;
-DROP TABLE debt;
-select * from kredit;
+
 ----------------------------------------------
 CREATE TABLE musteri (
   musteri_id NUMBER,
@@ -51,7 +45,7 @@ CREATE TABLE debt(
   USER_id NUMBER,
   ad VARCHAR2(30),
   pul NUMBER,
- -- parol VARCHAR2(50),
+ -- parol VARCHAR2(50), --sifrelemeyi oyren
   tarix date,
   constraint  pk_debt primary key(user_id)  
   );

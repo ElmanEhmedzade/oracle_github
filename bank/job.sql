@@ -10,7 +10,7 @@ BEGIN
   );
 
   COMMIT;
-  DBMS_OUTPUT.PUT_LINE('The job "UPDATE_DEPOZIT_MONTHLY_JOB" has been created and will run every minute.');
+  DBMS_OUTPUT.PUT_LINE('gecikme_update_olundu');
 END;
 /
 

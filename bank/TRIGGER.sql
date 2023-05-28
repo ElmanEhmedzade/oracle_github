@@ -27,8 +27,8 @@ BEGIN
               END)
     INTO musteri (MUSTERI_ID, AD, SOYAD, NOMRE, DOGUM_TARIXI, IS_YERI)
       VALUES (:NEW.MUSTERI_ID, :NEW.AD, :NEW.SOYAD, :NEW.NOMRE, :NEW.DOGUM_TARIXI, :NEW.IS_YERI)
-  SELECT * FROM DUAL
-  WHERE :NEW.maas - :NEW.xerc > :NEW.kreditin_meblegi / :NEW.ay;
+   SELECT * FROM DUAL
+   WHERE :NEW.maas - :NEW.xerc > :NEW.kreditin_meblegi / :NEW.ay;
   
   IF SQL%ROWCOUNT = 0 THEN
     dbms_output.put_line('Kredit verilmir.');

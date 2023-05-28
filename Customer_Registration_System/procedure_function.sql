@@ -23,7 +23,7 @@ EXCEPTION
     RAISE;
 END;
 ----------------------------------------------------
---INSERT UCUN PROSEDUR
+--silmek UCUN PROSEDUR
 CREATE OR REPLACE PROCEDURE DELETE_customers(
   CUSTOMERID1 NUMBER
 ) 
@@ -39,6 +39,7 @@ EXCEPTION
 END;
 
 ------------------------------------------------
+--musteri update 
 CREATE OR REPLACE PROCEDURE UPDATE_customers(
   CUSTOMERID1 NUMBER,
   NAME1 VARCHAR2,
@@ -70,6 +71,8 @@ EXCEPTION
     ROLLBACK;
     RAISE;
 END;
+exec UPDATE_customers(111,'tes','test','tes@gmail.com','21645612','wef','ewf','32','01-01-24');
+select * from customers_table;
 ------------------------------------------------------------------------
 
 --id e gore musterinin butunu melumatlarini getirir

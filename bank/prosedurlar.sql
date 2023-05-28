@@ -33,7 +33,7 @@ EXECUTE UPDATE_MONTHLY_PAYMENT(1);
 
 SELECT * FROM KREDIT;
 ---------------------------------------------------------------------------------------------------------------
---gecikdirme hazir deyil
+--gecikdirme hazir deyil gecikende kreditin mebleginin 1% meblegin ustune gelir
 CREATE OR REPLACE PROCEDURE update_monthly_rate(id_p IN NUMBER) IS
    p_customer_id kredit.musteri_id%type;
    p_loan_amount kredit.kreditin_meblegi%type;
@@ -43,7 +43,7 @@ CREATE OR REPLACE PROCEDURE update_monthly_rate(id_p IN NUMBER) IS
    p_months_diff number;
 BEGIN
     SELECT musteri_id, kreditin_meblegi, tarix INTO p_customer_id, p_loan_amount, p_date FROM kredit WHERE musteri_id = id_p;
-    p_montly_total_rate := p_loan_amount * 0.01; -- 1% ayl?k faiz
+    p_montly_total_rate := p_loan_amount * 0.01; -- 1% ayl?k faiz**************************
     p_total := p_loan_amount + p_montly_total_rate;
     SELECT months_between(sysdate, p_date) INTO p_months_diff FROM kredit WHERE musteri_id = id_p;
     IF p_months_diff > 1 THEN
@@ -72,8 +72,6 @@ CREATE OR REPLACE PROCEDURE UPDATE_MONTHLY_PAYMENT  IS
     
     
 BEGIN
-
-
     select user_id,pul from debt where  
     SELECT kreditin_meblegi INTO v_loan_amount FROM KREDIT WHERE MUSTERI_ID = ID1;
     SELECT ay INTO v_monthly_ay FROM KREDIT_ver WHERE MUSTERI_ID = ID1;
@@ -91,12 +89,7 @@ BEGIN
 END;
 
 
-
-
-
-
-
-
+exec UPDATE_MONTHLY_PAYMENT(1);
 
 
 
