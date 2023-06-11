@@ -1,4 +1,4 @@
-![MasterHead](https://img-c.udemycdn.com/course/750x422/2095410_943c_2.jpg)
+
 <h1 align="center">Hi 👋, I'm Elman Ehmed</h1>
 <h3 align="center">A passionate frontend developer from Azerbaijan</h3>
 
