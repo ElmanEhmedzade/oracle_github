@@ -1,6 +1,6 @@
-[![MasterHead]( https://www.google.com/url?sa=i&url=https%3A%2F%2Fthenewstack.io%2Fcube-dev-puts-postgresql-interface-on-its-headless-bi-platform%2F&psig=AOvVaw0zNdzHf0FCBGU0Ie0Vx-SK&ust=1686580558890000&source=images&cd=vfe&ved=0CBMQjhxqFwoTCKC99Ku4u_8CFQAAAAAdAAAAABAF)
+[![MasterHead](https://www.google.com/url?sa=i&url=https%3A%2F%2Fthenewstack.io%2Fcube-dev-puts-postgresql-interface-on-its-headless-bi-platform%2F&psig=AOvVaw0zNdzHf0FCBGU0Ie0Vx-SK&ust=1686580558890000&source=images&cd=vfe&ved=0CBMQjhxqFwoTCKC99Ku4u_8CFQAAAAAdAAAAABAF)
 <h1 align="center">Hi 👋, I'm Elman Ehmed</h1>
-<h3 align="center">A passionate frontend developer from Azerbaijan</h3>
+<h3 align="center">A passionate bi developer from Azerbaijan</h3>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
