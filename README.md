@@ -1,4 +1,4 @@
-[![MasterHead]([http:ile istediginiz fotoğrafın linkini buraya yazın](https://cdn.thenewstack.io/media/2022/06/baa5588f-power-g72ff3859c_1280-1024x576.png))
+[![MasterHead](https://cdn.thenewstack.io/media/2022/06/baa5588f-power-g72ff3859c_1280-1024x576.png)
 <h1 align="center">Hi 👋, I'm Elman Ehmed</h1>
 <h3 align="center">A passionate bi developer from Azerbaijan</h3>
 
