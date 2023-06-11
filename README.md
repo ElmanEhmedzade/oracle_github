@@ -1,4 +1,4 @@
-[![MasterHead](https://res.cloudinary.com/practicaldev/image/fetch/s--PIGZ6UVO--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0o7tfrec4101gvyjo1kl.png)
+[![MasterHead](https://img-c.udemycdn.com/course/750x422/2095410_943c_2.jpg)
 <h1 align="center">Hi 👋, I'm Elman Ehmed</h1>
 <h3 align="center">A passionate bi developer from Azerbaijan</h3>
 
