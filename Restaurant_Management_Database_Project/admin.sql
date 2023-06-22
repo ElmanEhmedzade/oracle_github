@@ -1,19 +1,4 @@
---SIPARIS (eve yoxsa restoran)
---yemekler
---YEMEK ELAVE ETMEK UCUN PROSEDUR
-----------------------------------------------------------
-/*Veritaban? Tasar?m?: Restoran?n?z?n i? gereksinimlerine uygun bir veritaban? tasarlamak önemlidir. Bu tasar?m, menüler, sipari?ler, mü?teri bilgileri, çal??anlar ve di?er ilgili veriler gibi restoran i?letmesi için gereken bilgileri içermelidir. Veritaban? tasar?m?nda tablolar, sütunlar ve ili?kiler gibi temel bile?enleri tan?mlamal?s?n?z.
 
-Veri Taban? Olu?turma: Oracle SQL kullanarak, veritaban? yönetim sisteminde restoran?n?z için bir veritaban? olu?turman?z gerekecektir. Veritaban?n?z? olu?tururken, tablolar?, sütunlar? ve uygun veri tiplerini tan?mlayarak veritaban?n?z?n yap?s?n? olu?turman?z gerekecektir.
-
-Tablo ve Veri Ekleme: Restoran?n?z?n i? gereksinimlerine uygun tablolar? olu?turduktan sonra, bu tablolara veri eklemeniz gerekecektir. Mü?teri bilgileri, menüler, çal??anlar ve di?er ilgili verileri tablolara ekleyerek restoran?n?z?n veritaban?n? olu?turabilirsiniz.
-
-Veri Sorgulama: Oracle SQL kullanarak, restoran?n?z?n veritaban?ndaki verilere eri?ebilir ve sorgular olu?turabilirsiniz. Örne?in, mü?teri sipari?lerini sorgulayabilir, menü ö?elerini güncelleyebilir veya çal??an bilgilerini sorgulayabilirsiniz.
-
-Veri Güncelleme ve Silme: Restoran?n?z?n veritaban?ndaki verileri güncellemek veya silmek istedi?inizde, Oracle SQL kullanarak ilgili tablolarda güncelleme ve silme i?lemleri gerçekle?tirebilirsiniz. Örne?in, bir mü?terinin sipari?ini güncellemek veya bir çal??an? veritaban?ndan silmek için uygun SQL komutlar?n? kullanman?z gerekecektir.
-
-Veritaban? Yedekleme ve Güvenlik: Veri kayb?n? önlemek için restoran?n?z?n veritaban?n? düzenli olarak yedeklemeniz önemlidir. Ayr?ca, güvenlik önlemleri alarak veritaban?n?z? yetkisiz eri?imlere kar?? koruman?z gerekecektir.
-*/
 ----------------------------------------------------------
 
 CREATE TABLE yemekler(
